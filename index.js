@@ -1,4 +1,4 @@
-const { appendToArray } = require('./lib/data.js');
+const { appendToArray, update } = require('./lib/data.js');
 const data = require('./lib/data.js');
 
 const initialDataPetras = { name: 'Petras', age: 99 };
@@ -60,31 +60,46 @@ const initialDataPetras = { name: 'Petras', age: 99 };
 //     }
 // });
 
-const pirmasKioskas = {
-    name: 'Pirmas kioskas',
-    size: 20,
-    price: 5000
-}
+// const pirmasKioskas = {
+//     name: 'Pirmas kioskas',
+//     size: 20,
+//     price: 5000
+// }
 
-const antrasKioskas = {
-    name: 'Antras kioskas',
-    size: 15,
-    price: 4000
-}
+// const antrasKioskas = {
+//     name: 'Antras kioskas',
+//     size: 15,
+//     price: 4000
+// }
 
-data.appendToArray('shop', 'kioskas', pirmasKioskas, (err, content) => {
-    // tikimasi, jog sekmes atveju, grazinamas turinys
-    // bus atnaujinta failo turinio versija
-    // turesim matyti:
-    // [{"name":"Pirmas kioskas","size":20,"price":5000}]
-    console.log(err, content);
-    data.appendToArray('shop', 'kioskas', antrasKioskas, (err, content) => {
-        // tikimasi, jog sekmes atveju, grazinamas turinys
-        // bus atnaujinta failo turinio versija
-        // turesim matyti:
-        // [{"name":"Pirmas kioskas","size":20,"price":5000},{"name":"Antras kioskas","size":15,"price":4000}]
-        console.log(err, content);
+// data.appendToArray('shop', 'kioskas', pirmasKioskas, (err, content) => {
+//     // tikimasi, jog sekmes atveju, grazinamas turinys
+//     // bus atnaujinta failo turinio versija
+//     // turesim matyti:
+//     // [{"name":"Pirmas kioskas","size":20,"price":5000}]
+//     console.log(err, content);
+//     data.appendToArray('shop', 'kioskas', antrasKioskas, (err, content) => {
+//         // tikimasi, jog sekmes atveju, grazinamas turinys
+//         // bus atnaujinta failo turinio versija
+//         // turesim matyti:
+//         // [{"name":"Pirmas kioskas","size":20,"price":5000},{"name":"Antras kioskas","size":15,"price":4000}]
+//         console.log(err, content);
+//     })
+// })
+
+
+data.updateArrayValue('shop', 'kioskas', 2, 'name', 'Trecias kioskas', (err, msg) => {
+    console.log(err, msg);
+
+    data.updateArrayValue('shop', 'kioskas', 3, 'name', 'Ketvirtas kioskas', (err, msg) => {
+        console.log(err, msg);
+
+        data.updateArrayValue('shop', 'kioskas', 0, 'size', 50, (err, msg) => {
+            console.log(err, msg);
+
+            data.updateArrayValue('shop', 'kioskas', 0, 'color', 'golden', (err, msg) => {
+                console.log(err, msg);
+            })
+        })
     })
 })
-
-
